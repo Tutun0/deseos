@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Deseos - Baby Shower Zadders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://intranet.asotrauma.com.co/invitacion/css/style.css">
+</head>
+<body class="font-body bg-gradient-to-b from-blue-50 to-blue-100 relative">
+
+    <!-- Multiple floating clouds positioned randomly -->
+    <img src="https://intranet.asotrauma.com.co/invitacion/svg/nube.svg" class="cloud w-32 top-20 left-10 opacity-90" style="animation-delay: 0s;">
+    <img src="https://intranet.asotrauma.com.co/invitacion/svg/nube.svg" class="cloud w-40 top-1/4 right-10 opacity-80" style="animation-delay: 1s;">
+    <img src="https://intranet.asotrauma.com.co/invitacion/svg/nube.svg" class="cloud w-28 bottom-1/4 left-8 opacity-85" style="animation-delay: 2s;">
+    <img src="https://intranet.asotrauma.com.co/invitacion/svg/nube.svg" class="cloud w-36 top-1/3 left-1/4 opacity-75" style="animation-delay: 3s;">
+    <img src="https://intranet.asotrauma.com.co/invitacion/svg/nube.svg" class="cloud w-24 bottom-1/3 right-1/4 opacity-90" style="animation-delay: 4s;">
+
+    <!-- Background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Stars -->
+        <div class="absolute w-2 h-2 bg-yellow-200 rounded-full top-1/4 left-1/6" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: twinkle 3s ease-in-out infinite;"></div>
+        <div class="absolute w-3 h-3 bg-yellow-200 rounded-full top-1/3 right-1/5" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: twinkle 4s ease-in-out infinite 0.5s;"></div>
+        <div class="absolute w-2 h-2 bg-yellow-200 rounded-full bottom-1/4 right-1/4" style="clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: twinkle 3.5s ease-in-out infinite 1s;"></div>
+    </div>
+
+    <!-- Main container with proper scrolling -->
+    <div class="main-container">
+        <div class="content-container">
+            <div class="max-w-3xl mx-auto relative z-10 py-8 px-4">
+                <!-- Header -->
+                <div class="bg-gradient-to-r from-cyan-600 to-blue-700 p-6 rounded-t-2xl text-center relative overflow-hidden mb-6 shadow-lg">
+                    <div class="absolute inset-0 bg-white opacity-10"></div>
+                    <h1 class="font-handwritten text-5xl text-white mb-2 relative z-10">Zadders</h1>
+                    <p class="text-blue-100 text-lg relative z-10">Lista de regalos para nuestro bebé</p>
+                </div>
+
+                <!-- Intro section -->
+                <div class="bg-white/90 p-6 rounded-lg shadow-md mb-6 backdrop-blur-sm border border-blue-100">
+                    <p class="text-blue-800 text-center mb-4">¡Gracias por querer consentir a nuestro bebé! Marca los regalos que te gustaría dar y añade cualquier otro que consideres útil.</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button id="musicBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M18 3a1 1 0 00-1.447-.894L8.763 6H5a3 3 0 000 6h.28l1.771 5.316A1 1 0 008 18h1a1 1 0 001-1v-4.382l6.553 3.276A1 1 0 0018 15V3z"/>
+                            </svg>
+                            Activar música
+                        </button>
+                        <button id="addItemBtn" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-all flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                            </svg>
+                            Añadir ítem
+                        </button>
+                        <button id="sendSelectionBtn" class="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-full transition-all flex items-center hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/>
+                            </svg>
+                            Enviar selección
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6" id="wishListContainer">
+                    <!-- === 🧷 PAÑALES Y LIMPIEZA === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-baby text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Pañales talla 3 y 4</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para cuando crezca (9+ kg)</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🚗 Movilidad === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-baby-carriage text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Coche</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Cochecito para pasear al bebé</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🚗 Movilidad === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-shapes text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Corral</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para que juegue seguro</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-walking text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Caminador</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para cuando empiece a explorar el mundo</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🧴 Cuidado === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-bath text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Kit de aseo</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Salud y cuidado</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 👕 Ropa === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-moon text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Pijamas para cuando crezca</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para noches cómodas y cálidas</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 👕 ROPA Y ACCESORIOS === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-tshirt text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Conjuntos talla 6-12 meses</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Playeras y pantalones</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🏠 Protección === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-shield-alt text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Toldillo protector</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para un descanso tranquilo</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🚽 Aprendizaje === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-toilet text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Bacinilla</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para sus...</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🧸 Estimulación === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-book text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Toallitas húmedas</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Toallitas para limpieza del bebé</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🍼 Alimentación === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-utensils text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Vajilla para bebé</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Para sus primeras comiditas</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🛁 BAÑO Y ASEO === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-bath text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Bañera portátil</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Con soporte para recién nacido</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- === 🎁 Misceláneos === -->
+                    <div class="item-card bg-white p-4 rounded-lg border border-blue-200 relative overflow-hidden">
+                        <div class="flex items-start">
+                            <input type="checkbox" class="item-checkbox w-5 h-5 text-blue-600 rounded-full border-2 border-blue-300 mt-1 mr-3 focus:ring-blue-500">
+                            <div class="flex-1">
+                                <div class="flex items-center">
+                                    <i class="fas fa-gift text-blue-500 mr-2"></i>
+                                    <h3 class="item-name font-medium text-blue-800 mb-1">Algo especial</h3>
+                                </div>
+                                <p class="item-desc text-blue-600 text-sm">Un detalle que nos sorprenda</p>
+                                <input type="text" class="item-bringer text-blue-500 text-xs mt-2 bg-transparent border-b border-blue-200 focus:border-blue-500 outline-none w-full" placeholder="¿Quién lo traerá?">
+                                <div class="personas-que-traen text-xs text-gray-500 mt-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add item form (hidden by default) -->
+                <div class="bg-white/90 p-6 rounded-lg shadow-md mb-6 backdrop-blur-sm border border-blue-200 hidden" id="addItemForm">
+                    <h3 class="text-blue-800 font-medium mb-4">Añadir nuevo ítem a la lista</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-blue-700 text-sm mb-1">Nombre del ítem</label>
+                            <input type="text" id="newItemName" class="w-full p-2 border border-blue-200 rounded focus:border-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-blue-700 text-sm mb-1">Descripción</label>
+                            <input type="text" id="newItemDesc" class="w-full p-2 border border-blue-200 rounded focus:border-blue-500 outline-none">
+                        </div>
+                        <div class="flex space-x-4">
+                            <button id="saveItemBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-all flex-1">
+                                Guardar ítem
+                            </button>
+                            <button id="cancelAddBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded-full transition-all flex-1">
+                                Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="bg-white/90 p-6 rounded-b-2xl shadow-md text-center backdrop-blur-sm border border-blue-100">
+                    <p class="font-handwritten text-2xl text-blue-700 mb-2">¡Esperamos verte pronto!</p>
+                    <p class="text-blue-600">Domingo 17 de Agosto • MZ 122 CASA 34 MODELIA 2</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating baby illustration - Submit button -->
+    <button title="Enviar selección" id="submitSelection" class="fixed bottom-8 right-8 w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center shadow-lg border-4 border-white z-20 hover:scale-110 transition-transform" style="animation: float 6s ease-in-out infinite;">
+        <img src="https://intranet.asotrauma.com.co/invitacion/svg/cigue.svg" class="w-12 h-12">
+    </button>
+
+    <!-- Audio element for music -->
+    <audio id="celebrationMusic" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <!-- Confirmation modal (hidden) -->
+    <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-6 max-w-md w-full mx-4">
+            <h3 class="text-xl font-bold text-blue-800 mb-4">Confirmar selección</h3>
+            <div id="selectedItemsList" class="max-h-60 overflow-y-auto mb-4"></div>
+            <div class="flex justify-end space-x-4">
+                <button id="cancelSendBtn" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancelar</button>
+                <button id="confirmSendBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Enviar</button>
+            </div>
+        </div>
+    </div>
+<script src="https://intranet.asotrauma.com.co/invitacion/js/script.js" defer></script>
+</body>
+</html>
