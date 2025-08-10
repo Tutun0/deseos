@@ -61,6 +61,9 @@
                             </svg>
                             Enviar selección
                         </button>
+                        <button id="helpBtn" title="Agregar nuevo regalo" class="text-blue-600 hover:text-blue-800 transition-all self-center" aria-label="Ver tutorial">
+                            <i class="fas fa-question-circle text-xl"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -351,6 +354,24 @@
             <div class="flex justify-end space-x-4">
                 <button id="cancelSendBtn" class="px-4 py-2 text-gray-600 hover:text-gray-800">Cancelar</button>
                 <button id="confirmSendBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Tutorial Modal (hidden by default) -->
+    <div id="videoTutorialModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="relative w-full max-w-4xl mx-4">
+            <!-- Close Button -->
+            <button id="closeVideoModal" class="absolute -top-10 right-0 text-white hover:text-gray-300">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <!-- Video Container -->
+            <div class="aspect-w-16 aspect-h-9 bg-black">
+                <video id="tutorialVideo" controls class="w-full">
+                    <source src="https://intranet.asotrauma.com.co/invitacion/video/Agregar_regalo.mp4" type="video/mp4">
+                    Tu navegador no soporta videos HTML5.
+                </video>
             </div>
         </div>
     </div>
